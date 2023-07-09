@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+	<script src="../static/js/script.js" th:src="@{/js/script.js}"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="../../static/css/mycss.css" th:href="@{/css/mycss.css}" />
+	<meta charset="ISO-8859-1">
+	<title>Update Bike Delete</title>
+</head>
+
+<body>
+	<header>
+		Used Bike
+		<span> <a class="addBike" href="/secure/insert">Add Bikes</a>
+			<a class="updateBike" href="/secure/update">update Bikes</a>
+			<a class="deleteBike" href="/secure/delete">delete Bikes</a>
+			<a class="logout" href="#" th:href="@{/logout}">Logout</a>
+		</span>
+
+	</header>
+	<main>
+		<h1>delete bikes!</h1>
+		<table>
+			<tr>
+				<th>Bike ID</th>
+				<th>Manufacturer ID</th>
+				<th>Model</th>
+				<th>Year</th>
+				<th>Colour</th>
+				<th>Price</th>
+			</tr>
+			<tr th:each="bike:${bikeList}">
+				<td th:text="${bike.bikeID}"></td>
+				<td th:text="${bike.manufacturerID}"></td>
+				<td th:text="${bike.bikeModel}"></td>
+				<td th:text="${bike.year}"></td>
+				<td th:text="${bike.colour}"></td>
+				<td th:text="${bike.price}"></td>
+				<td><a th:href="@{/secure/delete/deleteBike/}+${bike.bikeID}">Delete</a></td>
+			</tr>
+		</table>
+		<div></div>
+		<p><a href="/">To Main Page</a></p><br>
+		<p><a href="#" th:href="@{/logout}">Logout</a></p>
+	</main>
+
+</body>
+
+</html>

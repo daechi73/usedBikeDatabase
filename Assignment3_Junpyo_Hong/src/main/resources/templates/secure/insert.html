@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+	<script src="../static/js/script.js" th:src="@{/js/script.js}"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="../../static/css/mycss.css" th:href="@{/css/mycss.css}" />
+	<meta charset="ISO-8859-1">
+	<title>Used Bike Insert</title>
+</head>
+
+<body>
+	<header>
+		Used Bike
+		<span> <a class="addBike" href="/secure/insert">Add Bikes</a>
+			<a class="updateBike" href="/secure/update">update Bikes</a>
+			<a class="deleteBike" href="/secure/delete">delete Bikes</a>
+			<a class="logout" href="#" th:href="@{/logout}">Logout</a>
+		</span>
+
+	</header>
+	<main>
+		<h1>insert into table!</h1>
+		<table>
+			<tr>
+				<th>Bike ID</th>
+				<th>Manufacturer ID</th>
+				<th>Model</th>
+				<th>Year</th>
+				<th>Colour</th>
+				<th>Price</th>
+			</tr>
+			<tr th:each="bike:${bikeList}">
+				<td th:text="${bike.bikeID}"></td>
+				<td th:text="${bike.manufacturerID}"></td>
+				<td th:text="${bike.bikeModel}"></td>
+				<td th:text="${bike.year}"></td>
+				<td th:text="${bike.colour}"></td>
+				<td th:text="${bike.price}"></td>
+				<td><a th:href="@{/secure/delete/deleteBike/}+${bike.bikeID}">Delete</a></td>
+			</tr>
+		</table>
+		<form name="form" action="#" th:action="@{/secure/insert}" method="post">
+			Manufacturer ID: <select name="manufacturerID">
+				<option th:each="id:${manufacturerIDList}" th:value="${id.manufacturerID}"
+					th:text="${id.manufacturerID}" />
+			</select><br><br>
+			<input type="text" name="bikeModel" class="login-form-field" placeholder="bikeModel" /><br>
+			<input type="number" name="year" class="login-form-field" placeholder="year" /><br>
+			<input type="text" name="colour" class="login-form-field" placeholder="colour" /><br>
+			<input type="number" name="price" class="login-form-field" placeholder="price" /><br>
+			<input type="submit" value="add bike!" class="button">
+		</form>
+	
+	</main>
+
+</body>
+
+</html>

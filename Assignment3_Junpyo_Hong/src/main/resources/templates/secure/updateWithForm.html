@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+	<script src="../static/js/script.js" th:src="@{/js/script.js}"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="../../static/css/mycss.css" th:href="@{/css/mycss.css}" />
+	<meta charset="ISO-8859-1">
+	<title>Used Bike Update</title>
+</head>
+
+<body>
+	<header>
+		Used Bike
+		<span> <a class="addBike" href="/secure/insert">Add Bikes</a>
+			<a class="updateBike" href="/secure/update">update Bikes</a>
+			<a class="deleteBike" href="/secure/delete">delete Bikes</a>
+			<a class="logout" href="#" th:href="@{/logout}">Logout</a>
+		</span>
+
+	</header>
+	<main>
+		<h1>Update bikes!</h1>
+		<table>
+			<tr>
+				<th>Bike ID</th>
+				<th>Manufacturer ID</th>
+				<th>Model</th>
+				<th>Year</th>
+				<th>Colour</th>
+				<th>Price</th>
+			</tr>
+			<tr th:each="bike:${bikeList}">
+				<td th:text="${bike.bikeID}"></td>
+				<td th:text="${bike.manufacturerID}"></td>
+				<td th:text="${bike.bikeModel}"></td>
+				<td th:text="${bike.year}"></td>
+				<td th:text="${bike.colour}"></td>
+				<td th:text="${bike.price}"></td>
+				<td><a th:href="@{/secure/update/updateBike/}+${bike.bikeID}">Update</a></td>
+			</tr>
+		</table>
+		<br><br>
+		<form name="form" action="#" th:action="@{/secure/update/updateBike}" method="post" th:object="${bike}">
+			<input type="hidden" name="manufacturerID" th:field="*{manufacturerID}"><br><br>
+			<h2>Update Model name</h2>
+			<input type="text" name="bikeModel" class="login-form-field" placeholder="model" th:field="*{bikeModel}" /><br>
+			<input type="hidden" name="year" class="login-form-field" placeholder="year" th:field="*{year}" /><br>
+			<input type="hidden" name="colour" class="login-form-field" placeholder="colour" th:field="*{colour}" /><br>
+			<h2>Update Bike price</h2>
+			<input type="number" name="price" class="login-form-field" placeholder="price" th:field="*{price}" /><br>
+			<input type="submit" value="Update" class="button">
+		</form>
+
+	</main>
+</body>
+
+</html>
