@@ -28,6 +28,36 @@ The dependencies used:
  - Lombok
  - Spring Web
 
+---
 
+Homepage:
 
 ![img](https://github.com/daechi73/usedBikeMarket/blob/main/Homepage.png)
+
+---
+
+LoginPage:
+
+![img](https://github.com/daechi73/usedBikeMarket/blob/main/Loginpage.png)
+
+---
+
+InsertPage:
+
+![img](https://github.com/daechi73/usedBikeMarket/blob/main/insertBIke.png)
+
+---
+
+UpdatePage:
+
+![img](https://github.com/daechi73/usedBikeMarket/blob/main/updateBIke.png)
+
+---
+
+DeletePage:
+
+![img](https://github.com/daechi73/usedBikeMarket/blob/main/deleteBike.png)
+
+---
+
+
